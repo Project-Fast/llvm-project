@@ -1,0 +1,7 @@
+import("//build/library_headers.gni")
+
+library_headers("llvm_headers") {
+    deps = [
+        "include/llvm:gen_llvm_tblgen"
+    ]
+}

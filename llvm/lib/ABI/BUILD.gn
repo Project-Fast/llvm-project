@@ -1,0 +1,14 @@
+import("//build/llvm_library.gni")
+
+llvm_static_library("LLVMABI") {
+    sources = [
+        "Types.cpp",
+        "FunctionInfo.cpp",
+        "TargetInfo.cpp",
+        "IRTypeMapper.cpp",
+
+        "Targets/AArch64.cpp",
+        "Targets/BPF.cpp",
+        "Targets/X86.cpp",
+    ]
+}

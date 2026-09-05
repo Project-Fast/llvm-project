@@ -1,0 +1,6 @@
+group("lib") {
+    public_deps = [
+        "IR:LLVMCore",
+        "ABI:LLVMABI",
+    ]
+}

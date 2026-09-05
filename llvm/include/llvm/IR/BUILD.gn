@@ -1,0 +1,20 @@
+import("//build/llvm_tblgen.gni")
+
+group("gen_tblgen") {
+    public_deps = [
+        ":Attributes_inc",
+        ":RuntimeLibcalls_inc",
+    ]
+}
+
+llvm_tblgen("Attributes_inc") {
+    input = "Attributes.td"
+    output = "llvm/IR/Attributes.inc"
+    args = [ "-gen-attrs" ]
+}
+
+llvm_tblgen("RuntimeLibcalls_inc") {
+    input = "RuntimeLibcalls.td"
+    output = "llvm/IR/RuntimeLibcalls.inc"
+    args = [ "-gen-runtime-libcalls" ]
+}

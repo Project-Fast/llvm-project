@@ -1,0 +1,13 @@
+import("//build/llvm_tblgen.gni")
+
+group("gen_tblgen") {
+    public_deps = [
+        ":TargetLibraryInfo_inc"
+    ]
+}
+
+llvm_tblgen("TargetLibraryInfo_inc") {
+    input = "TargetLibraryInfo.td"
+    output = "llvm/Analysis/TargetLibraryInfo.inc"
+    args = [ "-gen-target-library-info" ]
+}

@@ -1,0 +1,15 @@
+import("//build/library_headers.gni")
+
+library_headers("llvm_tblgen") {
+    include_dir = "//out/gen"
+    deps = [
+        ":gen_llvm_tblgen"
+    ]
+}
+
+group("gen_llvm_tblgen") {
+    deps = [
+        "IR:gen_tblgen",
+        "Analysis:gen_tblgen",
+    ]
+}
