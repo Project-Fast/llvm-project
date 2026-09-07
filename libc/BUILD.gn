@@ -1,0 +1,5 @@
+import("//build/library_headers.gni")
+
+library_headers("libc_shared_headers") {
+    include_dir = "."
+}

@@ -1,0 +1,24 @@
+import("//build/llvm_library.gni")
+
+llvm_static_library("LLVMTableGen") {
+    sources = [
+        "DetailedRecordsBackend.cpp",
+        "Error.cpp",
+        "JSONBackend.cpp",
+        "Main.cpp",
+        "Parser.cpp",
+        "Record.cpp",
+        "SetTheory.cpp",
+        "StringMatcher.cpp",
+        "StringToOffsetTable.cpp",
+        "TableGenBackend.cpp",
+        "TableGenBackendSkeleton.cpp",
+        "TGLexer.cpp",
+        "TGParser.cpp",
+        "TGTimer.cpp",
+    ]
+
+    public_deps = [
+        "//llvm/llvm/lib/Support:LLVMSupport",
+    ]
+}

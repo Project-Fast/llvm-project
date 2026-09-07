@@ -9,7 +9,7 @@ library_headers("llvm_tblgen") {
 
 group("gen_llvm_tblgen") {
     deps = [
-        "IR:gen_tblgen",
+        "IR:intrinsics_gen",
         "Analysis:gen_tblgen",
     ]
 }

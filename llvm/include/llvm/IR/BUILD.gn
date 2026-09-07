@@ -1,9 +1,32 @@
 import("//build/llvm_tblgen.gni")
 
-group("gen_tblgen") {
+group("intrinsics_gen") {
     public_deps = [
         ":Attributes_inc",
         ":RuntimeLibcalls_inc",
+        
+        # Intrinsics.td
+        ":IntrinsicImpl_inc",
+        ":IntrinsicEnums_inc",
+        ":IntrinsicsAArch64_h",
+        ":IntrinsicsAMDGPU_h",
+        ":IntrinsicsARM_h",
+        ":IntrinsicsAVR_h",
+        ":IntrinsicsBPF_h",
+        ":IntrinsicsDirectX_h",
+        ":IntrinsicsHexagon_h",
+        ":IntrinsicsLoongArch_h",
+        ":IntrinsicsMips_h",
+        ":IntrinsicsNVPTX_h",
+        ":IntrinsicsPowerPC_h",
+        ":IntrinsicsR600_h",
+        ":IntrinsicsRISCV_h",
+        ":IntrinsicsSPIRV_h",
+        ":IntrinsicsS390_h",
+        ":IntrinsicsWebAssembly_h",
+        ":IntrinsicsX86_h",
+        ":IntrinsicsXCore_h",
+        ":IntrinsicsVE_h",
     ]
 }
 
@@ -17,4 +40,189 @@ llvm_tblgen("RuntimeLibcalls_inc") {
     input = "RuntimeLibcalls.td"
     output = "llvm/IR/RuntimeLibcalls.inc"
     args = [ "-gen-runtime-libcalls" ]
+}
+
+# Intrinsics.td
+
+llvm_tblgen("IntrinsicImpl_inc") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicImpl.inc"
+    args = [ "-gen-intrinsic-impl" ]
+}
+
+llvm_tblgen("IntrinsicEnums_inc") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicEnums.inc"
+    args = [ "-gen-intrinsic-enums" ]
+}
+
+llvm_tblgen("IntrinsicsAArch64_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsAArch64.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=aarch64"
+    ]
+}
+
+llvm_tblgen("IntrinsicsAMDGPU_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsAMDGPU.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=amdgcn"
+    ]
+}
+
+llvm_tblgen("IntrinsicsARM_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsARM.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=arm"
+    ]
+}
+
+llvm_tblgen("IntrinsicsAVR_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsAVR.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=avr"
+    ]
+}
+
+llvm_tblgen("IntrinsicsBPF_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsBPF.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=bpf"
+    ]
+}
+
+llvm_tblgen("IntrinsicsDirectX_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsDirectX.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=dx"
+    ]
+}
+
+llvm_tblgen("IntrinsicsHexagon_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsHexagon.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=hexagon"
+    ]
+}
+
+llvm_tblgen("IntrinsicsLoongArch_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsLoongArch.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=loongarch"
+    ]
+}
+
+llvm_tblgen("IntrinsicsMips_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsMips.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=mips"
+    ]
+}
+
+llvm_tblgen("IntrinsicsNVPTX_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsNVPTX.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=nvvm"
+    ]
+}
+
+llvm_tblgen("IntrinsicsPowerPC_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsPowerPC.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=ppc"
+    ]
+}
+
+llvm_tblgen("IntrinsicsR600_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsR600.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=r600"
+    ]
+}
+
+llvm_tblgen("IntrinsicsRISCV_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsRISCV.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=riscv"
+    ]
+}
+
+llvm_tblgen("IntrinsicsSPIRV_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsSPIRV.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=spv"
+    ]
+}
+
+llvm_tblgen("IntrinsicsS390_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsS390.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=s390"
+    ]
+}
+
+llvm_tblgen("IntrinsicsWebAssembly_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsWebAssembly.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=wasm"
+    ]
+}
+
+llvm_tblgen("IntrinsicsX86_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsX86.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=x86"
+    ]
+}
+
+llvm_tblgen("IntrinsicsXCore_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsXCore.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=xcore"
+    ]
+}
+
+llvm_tblgen("IntrinsicsVE_h") {
+    input = "Intrinsics.td"
+    output  = "llvm/IR/IntrinsicsVE.h"
+    args = [ 
+        "-gen-intrinsic-enums",
+        "-intrinsic-prefix=ve"
+    ]
 }

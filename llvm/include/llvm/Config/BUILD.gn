@@ -9,26 +9,30 @@ llvm_config("x64") {
         "LLVM_HOST_TRIPLE=\"GN\"",
         "LLVM_NATIVE_ARCH=\"X86\"",
         
+        "LLVM_ON_UNIX=1",
         "LLVM_ON_LINUX=1",
 
         "LLVM_USE_INTEL_JITEVENTS=0",
         "LLVM_USE_OPROFILE=0",
         "LLVM_USE_PERF=0",
 
-        "LLVM_VERSION_MAJOR=23",
+        "LLVM_VERSION_MAJOR=24",
         "LLVM_VERSION_MINOR=0",
         "LLVM_VERSION_PATCH=0",
-        "LLVM_VERSION_STRING=\"23.0.0git with GN\"",
+        "LLVM_VERSION_STRING=\"24.0.0git with GN\"",
+
+        "PACKAGE_NAME=\"LLVM\"",
+        "PACKAGE_VERSION=\"24.0.0git\"",
 
         "LLVM_WITH_Z3=0",
         "LLVM_ENABLE_CURL=0",
         "LLVM_ENABLE_HTTPLIB=0",
-        "LLVM_ENABLE_ZLIB=1",
-        "LLVM_ENABLE_ZSTD=1",
+        "LLVM_ENABLE_ZLIB=0",
+        "LLVM_ENABLE_ZSTD=0",
 
         "LLVM_HAVE_TFLITE=0",
         "LLVM_ENABLE_PROFCHECK=0",
-        "HAVE_SYSEXITS_H=0",
+        "HAVE_SYSEXITS_H=1",
 
         "LLVM_BUILD_LLVM_DYLIB=0",
         "LLVM_BUILD_SHARED_LIBS=0",
@@ -50,6 +54,43 @@ llvm_config("x64") {
 
         # For abi-breaking.h
         "LLVM_ENABLE_ABI_BREAKING_CHECKS=1",
-        "LLVM_ENABLE_REVERSE_ITERATION=1"
+        "LLVM_ENABLE_REVERSE_ITERATION=1",
+
+        # LLVM option (#cmakedefine01)
+        "ENABLE_BACKTRACES=0",
+        "ENABLE_CRASH_OVERRIDES=0",
+        "LLVM_ENABLE_CRASH_DUMPS=0",
+        "LLVM_WINDOWS_PREFER_FORWARD_SLASH=0",
+
+        # Basic POSIX/Linux
+        "HAVE_UNISTD_H=1",
+        "HAVE_SYS_MMAN_H=1",
+        "HAVE_SYS_IOCTL_H=1",
+
+        # libc / POSIX API
+        "HAVE_ISATTY=1",
+        "HAVE_GETPAGESIZE=1",
+        "HAVE_SYSCONF=1",
+        "HAVE_PREAD=1",
+        "HAVE_SETENV=1",
+        "HAVE_STRERROR_R=1",
+
+        # Linux stat()
+        "HAVE_STRUCT_STAT_ST_MTIM_TV_NSEC=1",
+
+        # pthread
+        "HAVE_PTHREAD_H=1",
+        "HAVE_LIBPTHREAD=1",
+        "HAVE_PTHREAD_MUTEX_LOCK=1",
+        "HAVE_PTHREAD_RWLOCK_INIT=1",
+
+        # Optional libraries disabled
+        "HAVE_ICU=0",
+        "HAVE_WINDOWS_ICU=0",
+        "HAVE_ICONV=0",
+
+        # LLVM optional features
+        "LLVM_GISEL_COV_ENABLED=0",
+        "LLVM_SUPPORT_XCODE_SIGNPOSTS=0",
     ]
 }

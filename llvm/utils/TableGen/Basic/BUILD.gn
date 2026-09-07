@@ -1,0 +1,32 @@
+import("//build/library_headers.gni")
+import("//build/llvm_source_set.gni")
+
+library_headers("LLVMTableGenBasic_headers") {
+    include_dir = "."
+}
+
+llvm_source_set("LLVMTableGenBasic") {
+    sources = [
+        "AMDGPUTargetDefEmitter.cpp",
+        "ARMTargetDefEmitter.cpp",
+        "Attributes.cpp",
+        "CodeGenIntrinsics.cpp",
+        "DirectiveEmitter.cpp",
+        "IntrinsicEmitter.cpp",
+        "PredicateExpanderDag.cpp",
+        "RISCVTargetDefEmitter.cpp",
+        "RuntimeLibcallsEmitter.cpp",
+        "RuntimeLibcalls.cpp",
+        "SDNodeProperties.cpp",
+        "TableGen.cpp",
+        "TargetFeaturesEmitter.cpp",
+        "TargetLibraryInfoEmitter.cpp",
+        "VTEmitter.cpp",
+    ]
+
+    public_deps = [
+        ":LLVMTableGenBasic_headers",
+        "//llvm/llvm/lib/TableGen:LLVMTableGen",
+        "//llvm/llvm/lib/Support:LLVMSupport",
+    ]
+}

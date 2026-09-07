@@ -1,7 +1,11 @@
 import("//build/library_headers.gni")
 
 library_headers("llvm_headers") {
-    deps = [
-        "include/llvm:gen_llvm_tblgen"
+    # deps = [
+    #     "include/llvm:gen_llvm_tblgen"
+    # ]
+    public_deps = [
+        "//llvm/libc:libc_shared_headers",
+        "//llvm/third-party/siphash:siphash_headers",
     ]
 }

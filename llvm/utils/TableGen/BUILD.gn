@@ -1,0 +1,11 @@
+import("//build/llvm_executable.gni")
+
+llvm_executable("llvm-min-tblgen") {
+    sources = [
+        "llvm-min-tblgen.cpp"
+    ]
+
+    deps = [
+        "Basic:LLVMTableGenBasic",
+    ]
+}
